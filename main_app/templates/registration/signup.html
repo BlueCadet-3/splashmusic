@@ -1,10 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Sign Up</h1>
-{% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
+<p>Please fill in this form to create an account.</p>
+<hr>
+<form action="{% url 'signup' %}" method="post">
+    {% csrf_token %}
+    <label for="first_name"><b>First Name</b></label>
+    <input type="text" placeholder="Enter First Name" name="first_name" required>
+    <label for="last_name"><b>Last Name</b></label>
+    <input type="text" placeholder="Enter Last Name" name="last_name" required>
+    <label for="email"><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="username" required>
+    <label for="location"><b>Location</b></label>
+    <input type="text" placeholder="Enter Location" name="location">
+    <label for="email"><b>Bio</b></label>
+    <input type="text" placeholder="Enter Bio" name="bio">
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password1" required>
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="password2" required>
+    <label>
+        <input type="checkbox" name="is_teacher"><span>Are You a Teacher?</span>
+    </label>
+    <div class="clearfix">
+        <a href="/">Cancel</a>
+        <button type="submit">Sign Up</button>
+    </div>
+</form>
+<!-- {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
 <form method="post" action="{% url 'signup' %}">
   {% csrf_token %}
   {{ form.as_p }}
   <input type="submit" class="btn" value="signup">
-</form>
+</form> -->
 {% endblock %}
