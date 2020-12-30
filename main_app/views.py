@@ -18,16 +18,18 @@ def signup(request):
     is_teacher = request.POST.get('is_teacher', False) and True
     location = request.POST.get('location')
     bio = request.POST.get('bio')
+    first_name = request.POST.get('first_name')
+    last_name = request.POST.get('last_name')
     if 'is_teacher' in form_data:
       del form_data['is_teacher']
-    del form_data['location']
-    del form_data['bio']
+      del form_data['location']
+      del form_data['bio']
     form = UserCreationForm(form_data)
     if form.is_valid():
       try:
         # This will add the user to the database
         user = form.save()
-        Profile.objects.create(is_teacher=is_teacher, location=location, bio=bio, user=user)
+        Profile.objects.create(first_name=first_name, last_name=last_name, is_teacher=is_teacher, location=location, bio=bio, user=user)
         # This is how we log a user in via code
         login(request, user)
         return redirect('home')
