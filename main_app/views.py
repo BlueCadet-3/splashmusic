@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
+
 def home(request):
   return render(request, 'home.html')
 
@@ -41,6 +42,7 @@ def signup(request):
           bio=bio, user=user
         )
         # This is how we log a user in via code
+        # Teachers index is showing students index
         login(request, user)
         return redirect('index')
       except Exception as err: 
@@ -51,6 +53,7 @@ def signup(request):
   # A bad POST or a GET request, so render signup.html with an empty form
   return render(request, 'registration/signup.html', {'error_message': error_message})
 def profiles_detail(request, profile_id):
+  # We need to make student detail
   teacher = Profile.objects.get(id=profile_id)
   lesson_form = LessonForm()
   return render(request, 'teachers/detail.html', {
