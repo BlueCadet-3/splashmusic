@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <h1>Our Instructors</h1>
+
 {% for teacher in teachers %}
+{% if teacher.is_teacher == True %}
   <div class="card">
     <a href="{% url 'detail' teacher.id %}">
     <div class="card-content">
@@ -9,13 +12,12 @@
       <h4> {{ teacher.first_name }} {{ teacher.last_name }}</h4>
       <p>Bio: {{ teacher.bio }}</p>
       <p>Location: {{ teacher.location }}</p>
-      <!-- {% if teacher.age > 0 %}
-        <p>Age: {{ teacher.age }}</p>
-      {% else %}
-        <p>Age: Kitten</p>
-      {% endif %} -->
     </a>
     </div>
   </div>
+
+  {% endif %}
+  
 {% endfor %}
+
 {% endblock %}
