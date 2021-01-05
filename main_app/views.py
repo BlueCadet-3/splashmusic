@@ -7,7 +7,6 @@ from .forms import LessonForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
 # Create your views here.
 
 def home(request):
@@ -86,4 +85,7 @@ class LessonDelete(LoginRequiredMixin, DeleteView):
   model = Lesson
   success_url = '/'
 
+class TeacherUpdate(LoginRequiredMixin,UpdateView):
+  model = Profile
+  fields = ['first_name', 'last_name', 'location', 'bio']
 

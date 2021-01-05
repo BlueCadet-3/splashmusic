@@ -1,44 +1,46 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
 <div class="row">
   <div class="col s6">
     <h3>{{ teacher.first_name }}'s Lessons</h3>
     <p>Bio: {{ teacher.bio }}</p>
     <p>Location: {{ teacher.location }}</p>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/7lasK3XSICc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <!-- new code below -->
-  {% if user.is_authenticated %}
-  
-    <form action="{% url 'add_lesson' teacher.id %}" method="POST">
-      {% csrf_token %}
-      {{ lesson_form.as_p }}
-      <input type="submit" value="Add Lesson" class="btn">
-    </form>
+    <p>Contact: <a href="mailto:{{ teacher.user }}">{{ teacher.user }}</a></p>
 
-    <table class="striped">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Instrument</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for lesson in teacher.lesson_set.all %}
-        <tr>
-          <td>{{lesson.date}}</td>
-          <td>{{lesson.time}}</td>
-          <td>{{lesson.instrument}}</td>
-          <td>{{lesson.description}}</td>
-          <td><a href="{% url 'lessons_update' lesson.id %}">Edit</a></td>
-          <td><a href="{% url 'lessons_delete' lesson.id %}">Delete</a></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    {% if user.is_authenticated and user.id == teacher.id %}
+    <p><a href="{% url 'teachers_update' teacher.id %}">Update Profile</a></p>
+    {% endif %}
+    {% if user.is_authenticated %}
+
+  <form action="{% url 'add_lesson' teacher.id %}" method="POST">
+    {% csrf_token %}
+    {{ lesson_form.as_p }}
+    <input type="submit" value="Add Lesson" class="btn">
+  </form>
+
+  <table class="striped">
+    <thead>
+    <tr>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Instrument</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for lesson in teacher.lesson_set.all %}
+    <tr>
+      <td>{{lesson.date}}</td>
+      <td>{{lesson.time}}</td>
+      <td>{{lesson.instrument}}</td>
+      <td>{{lesson.description}}</td>
+      <td><a href="{% url 'lessons_update' lesson.id %}">Edit</a></td>
+      <td><a href="{% url 'lessons_delete' lesson.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
 </div>
 </div>
 <p>
