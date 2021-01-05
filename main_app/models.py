@@ -25,6 +25,8 @@ class Lesson(models.Model):
     instrument = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField(max_length=250, blank=True, null=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={ 'profile_id': self.profile.id })
   
 

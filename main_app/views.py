@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Profile, Lesson
 from .forms import LessonForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -40,7 +42,7 @@ def signup(request):
         )
         # This is how we log a user in via code
         login(request, user)
-        return redirect('home')
+        return redirect('index')
       except Exception as err: 
         print(err)
         error_message = 'Invalid sign up - try again'
@@ -48,7 +50,6 @@ def signup(request):
       error_message = 'Invalid sign up - try again'
   # A bad POST or a GET request, so render signup.html with an empty form
   return render(request, 'registration/signup.html', {'error_message': error_message})
-
 def profiles_detail(request, profile_id):
   teacher = Profile.objects.get(id=profile_id)
   lesson_form = LessonForm()
@@ -61,7 +62,7 @@ class LessonCreateView(CreateView):
     model = Lesson
     form_class = LessonForm
 
-
+@login_required
 def add_lesson(request, profile_id):
   form = LessonForm(request.POST)
   if form.is_valid():
@@ -69,3 +70,17 @@ def add_lesson(request, profile_id):
     new_lesson.profile_id = profile_id
     new_lesson.save()
   return redirect('detail', profile_id=profile_id)
+
+def teachers_index(request):
+  teachers = Profile.objects.all()
+  return render(request, 'teachers/index.html', { 'teachers': teachers })
+
+class LessonUpdate(LoginRequiredMixin, UpdateView):
+  model = Lesson
+  fields = ['date', 'time', 'instrument', 'description']
+
+class LessonDelete(LoginRequiredMixin, DeleteView):
+  model = Lesson
+  success_url = '/'
+
+
