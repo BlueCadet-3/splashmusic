@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="row">
+    <div class="col s6">
+        <h3>{{ teacher.first_name }}'s Lessons</h3>
+    <!-- new code below -->
+    
+        <form action="{% url 'add_lesson' teacher.id %}" method="POST">
+            {% csrf_token %}
+            {{ lesson_form.as_p }}
+            <input type="submit" value="Add Lesson" class="btn">
+        </form>
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for lesson in teacher.lesson_set.all %}
+                <tr>
+                    <td>{{lesson.date}}</td>
+                    <td>{{lesson.description}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        </div>
+
+
+{% endblock %}

@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile
+from .models import Profile, Lesson
+from .forms import LessonForm
 
 
 # Create your views here.
@@ -29,7 +30,13 @@ def signup(request):
       try:
         # This will add the user to the database
         user = form.save()
-        Profile.objects.create(first_name=first_name, last_name=last_name, is_teacher=is_teacher, location=location, bio=bio, user=user)
+        Profile.objects.create(
+          first_name=first_name, 
+          last_name=last_name, 
+          is_teacher=is_teacher, 
+          location=location, 
+          bio=bio, user=user
+        )
         # This is how we log a user in via code
         login(request, user)
         return redirect('home')
@@ -40,3 +47,20 @@ def signup(request):
       error_message = 'Invalid sign up - try again'
   # A bad POST or a GET request, so render signup.html with an empty form
   return render(request, 'registration/signup.html', {'error_message': error_message})
+
+def profiles_detail(request, profile_id):
+  teacher = Profile.objects.get(id=profile_id)
+  lesson_form = LessonForm()
+  return render(request, 'teachers/detail.html', {
+    'teacher': teacher,
+    'lesson_form': lesson_form
+  })
+
+
+def add_lesson(request, profile_id):
+  form = LessonForm(request.POST)
+  if form.is_valid():
+    new_lesson = form.save(commit=False)
+    new_lesson.profile_id = profile_id
+    new_lesson.save()
+  return redirect('detail', profile_id=profile_id)
