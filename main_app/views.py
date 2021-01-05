@@ -2,10 +2,15 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Profile, Lesson
+from .models import Profile, Lesson, Photo
 from .forms import LessonForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+import uuid
+import boto3
+
+S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
+BUCKET = 'splash-music'
 
 # Create your views here.
 
@@ -71,6 +76,23 @@ def add_lesson(request, profile_id):
     new_lesson = form.save(commit=False)
     new_lesson.profile_id = profile_id
     new_lesson.save()
+  return redirect('detail', profile_id=profile_id)
+
+def add_photo(request, profile_id):
+  # photo-file will be the "name" attribute on the <input type="file"> used to upload the file
+  photo_file = request.FILES.get('photo-file', None)
+  if photo_file:
+    s3 = boto3.client('s3')
+    # need a unique "key" for s3 / but keep the images extension
+    key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+    # just in case something went wrong
+    try:
+      s3.upload_fileobj(photo_file, BUCKET, key)
+      # build the full url string
+      url = f"{S3_BASE_URL}{BUCKET}/{key}"
+      Photo.objects.create(url=url, profile_id=profile_id)
+    except:
+      print('An error occurred uploading file to S3')
   return redirect('detail', profile_id=profile_id)
 
 def teachers_index(request):
