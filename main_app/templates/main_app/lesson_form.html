@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if object %}
+<!-- UpdateView rendering this template -->
+<h1>Edit Lesson</h1>
+{% else %}
+<!-- CreateView rendering this template -->
+<h1>Add Lesson</h1>
+{% endif %}
+<!-- Leaving the action empty makes a form post to the same
+url as shown in the address bar -->
+<form action="" method="POST">
+<!-- Django requires the following for security -->
+{% csrf_token %}
+<table>
+  <!-- Render the inputs/labels inside of <tr> & <td>s -->
+  {{ form }}
+</table>
+<input type="submit" value="Submit!" class="btn">
+</form>
+{% if object %}
+<a href="/">Cancel</a>
+{% endif %}
+
+{% endblock %}
