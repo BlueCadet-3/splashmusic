@@ -20,8 +20,9 @@ class Profile(models.Model):
 
 # Default for CharField
 class Lesson(models.Model):
-    date = models.DateTimeField(default=timezone.now)
-    lesson = models.CharField(max_length=100, blank=True, null=True)
+    date = models.DateField()
+    time = models.TimeField(default=timezone.now)
+    instrument = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField(max_length=250, blank=True, null=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     

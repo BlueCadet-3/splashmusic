@@ -16,6 +16,8 @@
             <thead>
                 <tr>
                     <th>Date</th>
+                    <th>Time</th>
+                    <th>Instrument</th>
                     <th>Description</th>
                 </tr>
             </thead>
@@ -23,6 +25,8 @@
                 {% for lesson in teacher.lesson_set.all %}
                 <tr>
                     <td>{{lesson.date}}</td>
+                    <td>{{lesson.time}}</td>
+                    <td>{{lesson.instrument}}</td>
                     <td>{{lesson.description}}</td>
                 </tr>
                 {% endfor %}
@@ -30,6 +34,5 @@
         </table>
         </div>
         </div>
-
 
 {% endblock %}

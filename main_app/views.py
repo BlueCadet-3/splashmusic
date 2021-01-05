@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import CreateView
 from .models import Profile, Lesson
 from .forms import LessonForm
 
@@ -55,6 +56,10 @@ def profiles_detail(request, profile_id):
     'teacher': teacher,
     'lesson_form': lesson_form
   })
+
+class LessonCreateView(CreateView):
+    model = Lesson
+    form_class = LessonForm
 
 
 def add_lesson(request, profile_id):
