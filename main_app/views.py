@@ -95,10 +95,6 @@ def add_photo(request, profile_id):
       print('An error occurred uploading file to S3')
   return redirect('detail', profile_id=profile_id)
 
-# class DeletePhoto(DeleteView):
-#     model = Photo
-#     success_url = '/'
-
 def delete_photo(request, profile_id):
   Photo.objects.get(profile_id=profile_id).delete()
   return redirect('detail', profile_id=profile_id)
@@ -118,4 +114,3 @@ class LessonDelete(LoginRequiredMixin, DeleteView):
 class TeacherUpdate(LoginRequiredMixin,UpdateView):
   model = Profile
   fields = ['first_name', 'last_name', 'location', 'bio']
-

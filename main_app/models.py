@@ -35,5 +35,4 @@ class Lesson(models.Model):
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={ 'profile_id': self.profile.id })
-  
-
+        

@@ -6,27 +6,24 @@
     <h3>{{ teacher.first_name }}'s Lessons</h3>
     {% for photo in teacher.photo_set.all %}
       <img class="responsive-img card-panel" src="{{photo.url}}">
-      
-      {% if user.is_authenticated and user.id == teacher.id %}
-      <form action="{% url 'delete_photo' photo.profile.id %}" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Delete photo">
-      </form>
-      {% endif %}
-
+        {% if user.is_authenticated and user.id == teacher.id %}
+          <form action="{% url 'delete_photo' photo.profile.id %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Delete photo">
+          </form>
+        {% endif %}
     {% endfor %}
-    
     <p>Bio: {{ teacher.bio }}</p>
     <p>Location: {{ teacher.location }}</p>
     <p>Contact: <a href="mailto:{{ teacher.user }}">{{ teacher.user }}</a></p>
     {% if user.is_authenticated and user.id == teacher.id %}
     <p><a href="{% url 'teachers_update' teacher.id %}">Update Profile</a></p>
 
-  <form action="{% url 'add_photo' teacher.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
-    {% csrf_token %}
-    <input type="file" name="photo-file">
-    <br><br>
-    <input type="submit" class="btn" value="Upload Photo">
+    <form action="{% url 'add_photo' teacher.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+      {% csrf_token %}
+      <input type="file" name="photo-file">
+        <br> <br>
+      <input type="submit" class="btn" value="Upload Photo">
     </form>
 {% endif %}
   
@@ -49,6 +46,7 @@
   <tbody>
 
 {% for lesson in teacher.lesson_set.all %}
+
   <tr>
     <td>{{lesson.date}}</td>
     <td>{{lesson.time}}</td>
@@ -57,15 +55,19 @@
     <td><a href="{% url 'lessons_update' lesson.id %}">Edit</a></td>
     <td><a href="{% url 'lessons_delete' lesson.id %}">Delete</a></td>
   </tr>
+
 {% endfor %}
+
     </tbody>
     </table>
   </div>
 </div>
+
 <p>
   {% else %}
   <a href="{% url 'signup' %}"><button>Book A Lesson</button></a>
 </p>
+
 {% endif %}
 
 {% endblock %}
