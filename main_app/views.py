@@ -56,6 +56,7 @@ def signup(request):
       error_message = 'Invalid sign up - try again'
   # A bad POST or a GET request, so render signup.html with an empty form
   return render(request, 'registration/signup.html', {'error_message': error_message})
+  
 def profiles_detail(request, profile_id):
   # We need to make student detail
   teacher = Profile.objects.get(id=profile_id)
