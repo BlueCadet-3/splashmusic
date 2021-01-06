@@ -52,8 +52,11 @@
     <td>{{lesson.time}}</td>
     <td>{{lesson.instrument}}</td>
     <td>{{lesson.description}}</td>
-    <td><a href="{% url 'lessons_update' lesson.id %}">Edit</a></td>
-    <td><a href="{% url 'lessons_delete' lesson.id %}">Delete</a></td>
+    <td>{{lesson.video}}</td>
+    {% if user.id == lesson.profile.user_id %}
+      <td><a href="{% url 'lessons_update' lesson.id %}">Edit</a></td>
+      <td><a href="{% url 'lessons_delete' lesson.id %}">Delete</a></td>
+    {%  endif %}
   </tr>
 
 {% endfor %}
