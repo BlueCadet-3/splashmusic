@@ -25,6 +25,7 @@ class Photo(models.Model):
     def __str__(self):
         return f"Photo for profile_id: {self.profile.id} @{self.url}"
 
+
 # Default for CharField
 class Lesson(models.Model):
     date = models.DateField()
@@ -32,6 +33,7 @@ class Lesson(models.Model):
     instrument = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField(max_length=250, blank=True, null=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    video = models.CharField(max_length=250, blank=True, null=True)
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={ 'profile_id': self.profile.id })

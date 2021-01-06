@@ -48,7 +48,7 @@ def signup(request):
         # This is how we log a user in via code
         # Teachers index is showing students index
         login(request, user)
-        return redirect('index')
+        return redirect('detail')
       except Exception as err: 
         print(err)
         error_message = 'Invalid sign up - try again'
@@ -110,7 +110,11 @@ class LessonUpdate(LoginRequiredMixin, UpdateView):
 
 class LessonDelete(LoginRequiredMixin, DeleteView):
   model = Lesson
-  success_url = '/'
+
+  # def get_redirect_url(self):
+  #   return f"/teachers/{self.user.id}"
+  
+  success_url = '/teachers'
 
 class TeacherUpdate(LoginRequiredMixin,UpdateView):
   model = Profile
