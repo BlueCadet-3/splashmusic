@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -93,6 +93,14 @@ def add_photo(request, profile_id):
       Photo.objects.create(url=url, profile_id=profile_id)
     except:
       print('An error occurred uploading file to S3')
+  return redirect('detail', profile_id=profile_id)
+
+# class DeletePhoto(DeleteView):
+#     model = Photo
+#     success_url = '/'
+
+def delete_photo(request, profile_id):
+  Photo.objects.get(profile_id=profile_id).delete()
   return redirect('detail', profile_id=profile_id)
 
 def teachers_index(request):
