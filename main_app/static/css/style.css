@@ -12,12 +12,12 @@
 :root {
   scroll-behavior: smooth;
   /* Colors */
-  --bgc-01: #37455a;
-  --bgc-02: whitesmoke;
+  --bgc-01: #43455C;
+  --bgc-02: #3C3F58;
   --bgc-03: #91a6ba;
   --bgc-04: #a9a9a9;
-  --txt-01: #95aaaa;
-  --txt-02: #ececec;
+  --txt-01: #3BBA9C;
+  --txt-02: #707793;
   /* Fonts */
   --fnt-01: "Jura";
   --fnt-02: "Varela";
@@ -25,7 +25,7 @@
 
 /* Media queries */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     scroll-behavior: smooth;
     /* Colors */
@@ -36,13 +36,11 @@
     --txt-01: yellow;
     --txt-02: lime;
   }
-}
+} */
 
 /* Universal element rules */
 
 body {
-  background-color: var(--bgc-01);
-  color: rgba(0, 0, 0, 0.87);
   font-family: var(--fnt-02), "Roboto", "Ubuntu", sans-serif;
   line-height: 1.618;
   overflow-x: hidden;
@@ -53,6 +51,8 @@ body {
 }
 
 a {
+  color: var(--txt-02);
+  font-family: var(--fnt-02);
   text-decoration: none;
   -webkit-user-drag: none;
 }
@@ -64,6 +64,7 @@ h4,
 h5,
 h6 {
   font-family: var(--fnt-01);
+  color: var(--txt-01);
 }
 
 img {
@@ -78,6 +79,7 @@ li {
 /* base.html */
 
 header {
+  background-color: var(--bgc-01);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -88,52 +90,57 @@ div#top-nav {
 }
 
 div#left-nav {
-  background-color: #91a6ba;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1.2vmin;
 }
 
 img#nav-logo {
   width: 4rem;
-  margin: 1.2vmin;
 }
 
 ul#right-nav {
-  background-color: antiquewhite;
   display: flex;
   justify-content: space-around;
 }
 
 main.container {
   background-color: var(--bgc-02);
+  font-family: var(--fnt-02);
+  min-height: 100vh;
 }
 
 footer {
-  text-align: right;
+  background-color: var(--bgc-01);
+  min-height: 10vh;
+  color: var(--txt-01);
+  font-family: var(--fnt-02);
 }
 
 /* Sign Up */
 
 section#signup {
-  background-color: azure;
 }
 
 /* Login */
 
 section#login {
-  background-color: honeydew;
 }
 
 /* Teacher index */
 
-section#index {
-  background-color: blueviolet;
+section#index > h1 {
+  padding: 4vmin;
+  font-size: 9vmin;
+  text-align: center;
 }
 
 div.teacher-card {
-  border: 1vmin solid whitesmoke;
-  padding: 2vmin;
+  padding: 3vmin;
+  border: 2px solid var(--bgc-03);
+  border-radius: 4vmin;
+  margin: 2vmin;
 }
 
 div.teacher-content {
@@ -145,8 +152,6 @@ span.card-title {
 /* Teacher detail */
 
 section#detail {
-  background-color: cornflowerblue;
-  background-color: mintcream;
 }
 
 /* Forms */
