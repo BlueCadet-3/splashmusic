@@ -1,15 +1,144 @@
+/* Universal */
+
+@import url("https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500&family=Sora:wght@200;300&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+:root {
+  scroll-behavior: smooth;
+  /* Colors */
+  --bgc-01: #37455a;
+  --bgc-02: whitesmoke;
+  --bgc-03: #91a6ba;
+  --bgc-04: #a9a9a9;
+  --txt-01: #95aaaa;
+  --txt-02: #ececec;
+  /* Fonts */
+  --fnt-01: "Grenze Gotisch";
+  --fnt-02: "Sora";
+}
+
+/* Media queries */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    scroll-behavior: smooth;
+    /* Colors */
+    --bgc-01: #37455a;
+    --bgc-02: whitesmoke;
+    --bgc-03: yellowgreen;
+    --bgc-04: peachpuff;
+    --txt-01: #95aaaa;
+    --txt-02: #ececec;
+  }
+}
+
+/* Top level */
+
 body {
+  background-color: var(--bgc-01);
+  color: rgba(0, 0, 0, 0.87);
+  padding: 1.618rem;
+  line-height: 1.618;
+  overflow-x: hidden;
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
-  background-color: whitesmoke;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Universal element rules */
+
+a {
+  text-decoration: none;
+  -webkit-user-drag: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--fnt-01);
+}
+
+img {
+  max-width: 100%;
+  -webkit-user-drag: none;
+}
+
+li {
+  list-style: none;
+}
+
+/* Page body */
+
+header {
 }
 
 main {
-  flex: 1 0 auto;
+  background-color: var(--bgc-02);
+  font-family: var(--fnt-02);
 }
 
-footer.page-footer {
-  padding-top: 0;
+/* base.html */
+
+header {
+}
+
+div#top-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul#left-nav {
+  background-color: cadetblue;
+}
+
+ul#right-nav {
+  background-color: antiquewhite;
+}
+
+main.container {
+  background-color: var(--bgc-02);
+}
+
+footer {
   text-align: right;
+}
+
+/* Sign Up */
+
+section#signup {
+  background-color: azure;
+}
+
+/* Login */
+
+section#login {
+  background-color: honeydew;
+}
+
+/* Teacher index */
+
+section#index {
+  background-color: blueviolet;
+}
+
+/* Teacher detail */
+
+section#detail {
+  background-color: cornflowerblue;
+  background-color: mintcream;
+}
+
+/* Forms */
+
+section.form {
 }

@@ -2,9 +2,13 @@
 {% load embed_video_tags %}
 {% block content %}
 
-<div class="row">
-  <div class="col s6">
-    <h3>{{ teacher.first_name }}'s Lessons</h3>
+<section id="detail">
+
+<div class="">
+  <div class="">
+    <h3>
+      {{ teacher.first_name }}'s Lessons
+    </h3>
     {% for photo in teacher.photo_set.all %}
       <img class="responsive-img card-panel" src="{{photo.url}}">
         {% if user.is_authenticated and user.id == teacher.user_id %}
@@ -14,9 +18,11 @@
           </form>
         {% endif %}
     {% endfor %}
-    <p>Bio: {{ teacher.bio }}</p>
+
+    <p>Email: <a href="mailto:{{ teacher.user }}">{{ teacher.user }}</a></p>
     <p>Location: {{ teacher.location }}</p>
-    <p>Contact: <a href="mailto:{{ teacher.user }}">{{ teacher.user }}</a></p>
+    <p>Bio: {{ teacher.bio }}</p>
+
     {% if user.is_authenticated and user.id == teacher.user_id %}
     <p><a href="{% url 'teachers_update' teacher.id %}">Update Profile</a></p>
 
