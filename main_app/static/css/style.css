@@ -14,8 +14,8 @@
   /* Colors */
   --bgc-01: #43455C;
   --bgc-02: #3C3F58;
-  --bgc-03: #91a6ba;
-  --bgc-04: #a9a9a9;
+  --bgc-03: #707793;
+  --bgc-04: whitesmoke;
   --txt-01: #3BBA9C;
   --txt-02: #707793;
   /* Fonts */
@@ -130,7 +130,7 @@ section#login {
 
 /* Teacher index */
 
-section#index > h1 {
+section#index > h1, section#signup > h1 {
   padding: 4vmin;
   font-size: 9vmin;
   text-align: center;
@@ -156,7 +156,51 @@ section#detail {
 
 /* Forms */
 
-section.form {
+form {
+  display: flex;
+  flex-direction:column;
+  flex-wrap:wrap;
+  justify-content: flex-start;
+  padding: 1vmin;
+}
+
+form > input, div.teacher-check {
+  background-color: transparent;
+  color: var(--bgc-03);
+  padding: 2vmin;
+  margin: 2vmin;
+  outline: none;
+  border-bottom: 2px solid var(--bgc-03);
+}
+
+::placeholder {
+  font-family: var(--fnt-02);
+  color: var(--bgc-03);
+}
+
+div.teacher-check {
+  border: none;
+}
+
+div.button-bar {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+button {
+  background-color: var(--bgc-03);
+  max-width: 30vmin;
+  font-family: var(--txt-01);
+  font-size: 1.5rem;
+  padding: 2vmin 1vmin;
+  border-radius: 2vmin;
+  outline: none;
+}
+
+button:hover {
+  background-color: #3BBA9C; 
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 section#lesson-delete {

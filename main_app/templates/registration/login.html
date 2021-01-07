@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<section id="login">
+<section class="form" id="login">
 
   <div class="form" id="login">
     <h1>Log In</h1>
     <form method="post" action="{% url 'login' %}">
       {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" class="btn" value="login">
+      {{ form }}
+      <button type="submit">
+        Login
+      </button>
       <input type="hidden" name="next" value="{{ next }}">
     </form>
   </div>
