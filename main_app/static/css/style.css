@@ -1,6 +1,6 @@
 /* Universal */
 
-@import url("https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500&family=Sora:wght@200;300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jura:wght@700&family=Varela&display=swap");
 
 * {
   box-sizing: border-box;
@@ -19,8 +19,8 @@
   --txt-01: #95aaaa;
   --txt-02: #ececec;
   /* Fonts */
-  --fnt-01: "Grenze Gotisch";
-  --fnt-02: "Sora";
+  --fnt-01: "Jura";
+  --fnt-02: "Varela";
 }
 
 /* Media queries */
@@ -78,20 +78,31 @@ li {
 /* base.html */
 
 header {
-  height: 20vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
 }
 
 div#top-nav {
-  display: flex;
-  justify-content: space-between;
+  border-bottom: 1vmin;
 }
 
-ul#left-nav {
-  background-color: cadetblue;
+div#left-nav {
+  background-color: #91a6ba;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img#nav-logo {
+  width: 4rem;
+  margin: 1.2vmin;
 }
 
 ul#right-nav {
   background-color: antiquewhite;
+  display: flex;
+  justify-content: space-around;
 }
 
 main.container {
@@ -118,6 +129,17 @@ section#login {
 
 section#index {
   background-color: blueviolet;
+}
+
+div.teacher-card {
+  border: 1vmin solid whitesmoke;
+  padding: 2vmin;
+}
+
+div.teacher-content {
+}
+
+span.card-title {
 }
 
 /* Teacher detail */
