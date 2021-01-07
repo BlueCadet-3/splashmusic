@@ -30,20 +30,20 @@
     scroll-behavior: smooth;
     /* Colors */
     --bgc-01: #37455a;
-    --bgc-02: whitesmoke;
+    --bgc-02: red;
     --bgc-03: yellowgreen;
-    --bgc-04: peachpuff;
-    --txt-01: #95aaaa;
-    --txt-02: #ececec;
+    --bgc-04: honeydew;
+    --txt-01: yellow;
+    --txt-02: lime;
   }
 }
 
-/* Top level */
+/* Universal element rules */
 
 body {
   background-color: var(--bgc-01);
   color: rgba(0, 0, 0, 0.87);
-  padding: 1.618rem;
+  font-family: var(--fnt-02), "Roboto", "Ubuntu", sans-serif;
   line-height: 1.618;
   overflow-x: hidden;
   display: flex;
@@ -51,8 +51,6 @@ body {
   user-select: none;
   -webkit-user-drag: none;
 }
-
-/* Universal element rules */
 
 a {
   text-decoration: none;

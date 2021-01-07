@@ -9,6 +9,7 @@
     <h3>
       {{ teacher.first_name }}'s Lessons
     </h3>
+
     {% for photo in teacher.photo_set.all %}
       <img class="responsive-img card-panel" src="{{photo.url}}">
         {% if user.is_authenticated and user.id == teacher.user_id %}
@@ -24,60 +25,62 @@
     <p>Bio: {{ teacher.bio }}</p>
 
     {% if user.is_authenticated and user.id == teacher.user_id %}
-    <p><a href="{% url 'teachers_update' teacher.id %}">Update Profile</a></p>
+      <p><a href="{% url 'teachers_update' teacher.id %}">Update Profile</a></p>
 
-    <form action="{% url 'add_photo' teacher.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+      <form action="{% url 'add_photo' teacher.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
       {% csrf_token %}
       <input type="file" name="photo-file">
         <br> <br>
       <input type="submit" class="btn" value="Upload Photo">
     </form>
-{% endif %}
-  
-{% if user.is_authenticated %}
-  <form action="{% url 'add_lesson' teacher.id %}" method="POST">
-    {% csrf_token %}
-    {{ lesson_form.as_p }}
-    <input type="submit" value="Add Lesson" class="btn">
-  </form>
+    {% endif %}
 
-  <table class="striped">
-    <thead>
+    {% if user.is_authenticated %}
+      <form action="{% url 'add_lesson' teacher.id %}" method="POST">
+        {% csrf_token %}
+        {{ lesson_form.as_p }}
+        <input type="submit" value="Add Lesson" class="btn">
+      </form>
+
+    <table class="lessons">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Instrument</th>
+          <th>Description</th>
+          <th>Video</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      {% for lesson in teacher.lesson_set.all %}
+
       <tr>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Instrument</th>
-        <th>Description</th>
-        <th>Video</th>
+        <td>{{lesson.date}}</td>
+        <td>{{lesson.time}}</td>
+        <td>{{lesson.instrument}}</td>
+        <td>{{lesson.description}}</td>
+        <td>{% video lesson.video 'medium' %}</td>
+
+        {% if user.id == lesson.profile.user_id %}
+          <td><a href="{% url 'lessons_update' lesson.id %}">Edit</a></td>
+          <td><a href="{% url 'lessons_delete' lesson.id %}">Delete</a></td>
+        {%  endif %}
+
       </tr>
-    </thead>
-  <tbody>
 
-{% for lesson in teacher.lesson_set.all %}
+      {% endfor %}
 
-  <tr>
-    <td>{{lesson.date}}</td>
-    <td>{{lesson.time}}</td>
-    <td>{{lesson.instrument}}</td>
-    <td>{{lesson.description}}</td>
-    <td>{% video lesson.video 'medium' %}</td>
-    {% if user.id == lesson.profile.user_id %}
-      <td><a href="{% url 'lessons_update' lesson.id %}">Edit</a></td>
-      <td><a href="{% url 'lessons_delete' lesson.id %}">Delete</a></td>
-    {%  endif %}
-  </tr>
-
-{% endfor %}
-
-    </tbody>
+      </tbody>
     </table>
   </div>
 </div>
 
-<p>
-  {% else %}
-  <a href="{% url 'signup' %}"><button>Book A Lesson</button></a>
-</p>
+  <p>
+    {% else %}
+    <a href="{% url 'signup' %}"><button>Book A Lesson</button></a>
+  </p>
 
 {% endif %}
 
