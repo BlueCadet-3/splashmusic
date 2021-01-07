@@ -5,6 +5,10 @@
 
   <h1>Welcome to Splash Music</h1>
   <p>
+    Splash Music connects students of all ages and skill levels with musicians from the top music conservatories and ensembles in the
+    world. Whether you’re a beginner or professional, our teachers will make sure you have the best online music experience.
+  </p>
+  <p>
     {% if user.is_authenticated %}
       <a href="{% url 'index' %}"><button>Book A Lesson</button></a>
     {% else %}
