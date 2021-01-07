@@ -1,20 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Edit Lesson</h1>
+<section class="form" id="lesson-edit">
 
-<form action="" method="POST">
-{% csrf_token %}
-  <table>
-    {{ form }}
-  </table>
+  <h1>Edit Lesson</h1>
+  
+  <form action="" method="POST">
+    {% csrf_token %}
+    <table>
+      {{ form }}
+    </table>
     <input type="submit" value="Submit!" class="btn">
-</form>
-
-{% if object %}
-
-<a href="/">Cancel</a>
-
-{% endif %}
+  </form>
+  
+  {% if object %}
+  
+  <a href="/">Cancel</a>
+  
+  {% endif %}
+  
+</section>
 
 {% endblock %}

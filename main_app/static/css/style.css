@@ -1,15 +1,169 @@
+/* Universal */
+
+@import url("https://fonts.googleapis.com/css2?family=Jura:wght@700&family=Varela&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+:root {
+  scroll-behavior: smooth;
+  /* Colors */
+  --bgc-01: #43455C;
+  --bgc-02: #3C3F58;
+  --bgc-03: #91a6ba;
+  --bgc-04: #a9a9a9;
+  --txt-01: #3BBA9C;
+  --txt-02: #707793;
+  /* Fonts */
+  --fnt-01: "Jura";
+  --fnt-02: "Varela";
+}
+
+/* Media queries */
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    scroll-behavior: smooth;
+    /* Colors */
+    --bgc-01: #37455a;
+    --bgc-02: red;
+    --bgc-03: yellowgreen;
+    --bgc-04: honeydew;
+    --txt-01: yellow;
+    --txt-02: lime;
+  }
+} */
+
+/* Universal element rules */
+
 body {
+  font-family: var(--fnt-02), "Roboto", "Ubuntu", sans-serif;
+  line-height: 1.618;
+  overflow-x: hidden;
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
-  background-color: whitesmoke;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-main {
-  flex: 1 0 auto;
+a {
+  color: var(--txt-02);
+  font-family: var(--fnt-02);
+  text-decoration: none;
+  -webkit-user-drag: none;
 }
 
-footer.page-footer {
-  padding-top: 0;
-  text-align: right;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--fnt-01);
+  color: var(--txt-01);
+}
+
+img {
+  max-width: 100%;
+  -webkit-user-drag: none;
+}
+
+li {
+  list-style: none;
+}
+
+/* base.html */
+
+header {
+  background-color: var(--bgc-01);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+div#top-nav {
+  border-bottom: 1vmin;
+}
+
+div#left-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.2vmin;
+}
+
+img#nav-logo {
+  width: 4rem;
+}
+
+ul#right-nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+main.container {
+  background-color: var(--bgc-02);
+  font-family: var(--fnt-02);
+  min-height: 100vh;
+}
+
+footer {
+  background-color: var(--bgc-01);
+  min-height: 10vh;
+  color: var(--txt-01);
+  font-family: var(--fnt-02);
+}
+
+/* Sign Up */
+
+section#signup {
+}
+
+/* Login */
+
+section#login {
+}
+
+/* Teacher index */
+
+section#index > h1 {
+  padding: 4vmin;
+  font-size: 9vmin;
+  text-align: center;
+}
+
+div.teacher-card {
+  padding: 3vmin;
+  border: 2px solid var(--bgc-03);
+  border-radius: 4vmin;
+  margin: 2vmin;
+}
+
+div.teacher-content {
+}
+
+span.card-title {
+}
+
+/* Teacher detail */
+
+section#detail {
+}
+
+/* Forms */
+
+section.form {
+}
+
+section#lesson-delete {
+}
+
+section#lesson-edit {
+}
+
+section#profile-edit {
 }

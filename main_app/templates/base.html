@@ -4,42 +4,49 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Splash Music</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
+  <title>Splash Music</title>
 </head>
 
 <body>
-    <header class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper">
-                <ul>
-                    <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Splash Music</a></li>
-                </ul>
-                <ul class="right">
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'index' %}">All Instructors</a></li>
-                    {% if user.is_authenticated %}
-                        <li><a href="{% url 'logout' %} ">Logout</a></li>
-                    {% else %}
-                        <li><a href="{% url 'login' %} ">Login</a></li>
-                        <li><a href="{% url 'signup' %} ">Sign Up</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <main class="container">
-        {% block content %}
-        {% endblock %}
-    </main>
-    <footer class="page-footer">
-        <div class="right">All Rights Reserved, &copy; 2021 Splash Music &nbsp;</div>
-    </footer>
-</body>
+  <header>
+    <nav>
+      <div id="top-nav">
+        <div id="left-nav">
+          <img src="/static/logo.png" alt="logo" id="nav-logo">
+          <h2>Splash Music</h2>
+        </div>
+        <ul id="right-nav">
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'index' %}">All Instructors</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </header>
 
+  <main class="container">
+
+    {% block content %}
+    {% endblock %}
+
+  </main>
+
+  <footer>
+    <div id="footer">
+      All Rights Reserved, &copy; 2021 Splash Music &nbsp
+      <span id="favicon"><img src="{% static 'favicon.png' %}"></span>
+    </div>
+  </footer>
+
+</body>
 </html>

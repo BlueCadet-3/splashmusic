@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Welcome to Splash Music</h1>
-<p>
-  {% if user.is_authenticated %}
-  <a href="{% url 'index' %}"><button>Book A Lesson</button></a>
-  {% else %}
-  <a href="{% url 'signup' %}"><button>Book A Lesson</button></a>
-  {% endif %}
-</p>
+<section class="content" id="home">
 
+  <h1>Welcome to Splash Music</h1>
+  <p>
+    {% if user.is_authenticated %}
+      <a href="{% url 'index' %}"><button>Book A Lesson</button></a>
+    {% else %}
+      <a href="{% url 'signup' %}"><button>Book A Lesson</button></a>
+    {% endif %}
+  </p>
+
+</section>
 
 {% endblock %}
