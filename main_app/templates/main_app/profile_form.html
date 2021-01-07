@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<section class="form" id="profile-form">
+<section class="form" id="profile-edit">
   
   <h1>Edit Profile</h1>
   
@@ -14,13 +14,13 @@
   </form>
   
   {% if object %} 
-  <a href="/">Cancel</a> 
-  <form action="{% url 'add_photo' profile.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
-    {% csrf_token %}
-    <input type="file" name="photo-file">
-    <br><br>
-    <input type="submit" class="btn" value="Upload Photo">
-  </form>
+    <a href="/">Cancel</a> 
+    <form action="{% url 'add_photo' profile.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+      {% csrf_token %}
+      <input type="file" name="photo-file">
+      <br><br>
+      <input type="submit" class="btn" value="Upload Photo">
+    </form>
   {% endif %}
 
 </section>

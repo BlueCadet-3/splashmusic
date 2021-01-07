@@ -77,19 +77,10 @@ li {
   list-style: none;
 }
 
-/* Page body */
-
-header {
-}
-
-main {
-  background-color: var(--bgc-02);
-  font-family: var(--fnt-02);
-}
-
 /* base.html */
 
 header {
+  height: 20vh;
 }
 
 div#top-nav {
@@ -141,4 +132,13 @@ section#detail {
 /* Forms */
 
 section.form {
+}
+
+section#lesson-delete {
+}
+
+section#lesson-edit {
+}
+
+section#profile-edit {
 }
