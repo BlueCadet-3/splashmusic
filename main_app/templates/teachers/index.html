@@ -8,6 +8,7 @@
   <div class="card">
     <a href="{% url 'detail' teacher.id %}">
     <div class="card-content">
+      <img src="{{teacher.photo_set.first.url}}">
       <span class="card-title">{{ teacher.name }}</span>
       <h4> {{ teacher.first_name }} {{ teacher.last_name }}</h4>
       <p>Bio: {{ teacher.bio }}</p>

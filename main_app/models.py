@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
+from embed_video.fields import EmbedVideoField
 
 # Create your models here.
 class Profile(models.Model):
@@ -37,4 +38,6 @@ class Lesson(models.Model):
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={ 'profile_id': self.profile.id })
-        
+
+class ModelName(models.Model):
+    video = EmbedVideoField(blank=True)        

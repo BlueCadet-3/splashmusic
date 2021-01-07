@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load embed_video_tags %}
 {% block content %}
 
 <div class="row">
@@ -41,6 +42,7 @@
         <th>Time</th>
         <th>Instrument</th>
         <th>Description</th>
+        <th>Video</th>
       </tr>
     </thead>
   <tbody>
@@ -52,7 +54,7 @@
     <td>{{lesson.time}}</td>
     <td>{{lesson.instrument}}</td>
     <td>{{lesson.description}}</td>
-    <td>{{lesson.video}}</td>
+    <td>{% video lesson.video 'medium' %}</td>
     {% if user.id == lesson.profile.user_id %}
       <td><a href="{% url 'lessons_update' lesson.id %}">Edit</a></td>
       <td><a href="{% url 'lessons_delete' lesson.id %}">Delete</a></td>

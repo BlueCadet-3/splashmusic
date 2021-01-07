@@ -48,7 +48,7 @@ def signup(request):
         # This is how we log a user in via code
         # Teachers index is showing students index
         login(request, user)
-        return redirect('detail')
+        return redirect('index')
       except Exception as err: 
         print(err)
         error_message = 'Invalid sign up - try again'
@@ -106,7 +106,7 @@ def teachers_index(request):
 
 class LessonUpdate(LoginRequiredMixin, UpdateView):
   model = Lesson
-  fields = ['date', 'time', 'instrument', 'description']
+  fields = ['date', 'time', 'instrument', 'description', 'video']
 
 class LessonDelete(LoginRequiredMixin, DeleteView):
   model = Lesson
