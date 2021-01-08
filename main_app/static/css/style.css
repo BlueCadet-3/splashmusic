@@ -63,6 +63,10 @@ h6 {
   color: var(--txt-01);
 }
 
+p {
+  color: var(--txt-02);
+}
+
 #about-html {
   text-align: center;
 }
@@ -122,6 +126,7 @@ footer {
   min-height: 8vh;
   color: var(--txt-01);
   font-family: var(--fnt-02);
+  padding: 10px;
 }
 
 /* Sign Up */
@@ -251,3 +256,9 @@ section#lesson-edit {
 
 section#profile-edit {
 } */
+
+section.content { 
+  text-align: center;
+  padding: 10px;
+}
+
