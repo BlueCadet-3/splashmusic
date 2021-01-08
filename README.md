@@ -7,14 +7,12 @@ Welcome to Splash Music, an online lessons app written with Django and Python. T
 ## Technologies Used
 
 * HTML
-* CSS
-  <!-- * [Font Awesome](https://fontawesome.com/)
-  * [Google Fonts](https://fonts.google.com/) -->
-  * [Materialize](https://materializecss.com/)
 * [Django](https://www.djangoproject.com/)
 * [Python](https://www.python.org/)
-* [Amazon Web Services]()
+* [Css]()
+* [Amazon Web Services](https://aws.amazon.com/)
 * [Heroku](https://www.heroku.com/)
+* [Google Fonts](https://fonts.google.com/) 
 
 ## Getting Started
 
