@@ -30,7 +30,6 @@
       <p><a href="{% url 'teachers_update' teacher.id %}">Update Profile</a></p>
 
       {% if teacher.photo_set.all|length > 0 %}
-      <p>Hello</p>
       {% else %}
       <form action="{% url 'add_photo' teacher.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
       {% csrf_token %}
@@ -45,42 +44,27 @@
     {% if user.is_authenticated %}
       <form action="{% url 'add_lesson' teacher.id %}" method="POST">
         {% csrf_token %}
-        {{ lesson_form.as_p }}
+        <table>
+          {{ lesson_form.as_table }}
+        </table>
         <input type="submit" value="Add Lesson" class="btn">
       </form>
 
-    <table class="lessons">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Instrument</th>
-          <th>Description</th>
-          <th>Video</th>
-        </tr>
-      </thead>
-      <tbody>
-
       {% for lesson in teacher.lesson_set.all %}
 
-      <tr>
-        <td>{{lesson.date}}</td>
-        <td>{{lesson.time}}</td>
-        <td>{{lesson.instrument}}</td>
-        <td>{{lesson.description}}</td>
-        <td>{% video lesson.video 'medium' %}</td>
-
-        {% if user.id == lesson.profile.user_id %}
-          <td><a href="{% url 'lessons_update' lesson.id %}">Edit</a></td>
-          <td><a href="{% url 'lessons_delete' lesson.id %}">Delete</a></td>
-        {%  endif %}
-
-      </tr>
+      <div class="lesson-container">
+        <div class="lesson-info">
+          <p>
+            {{ lesson.date }} | {{ lesson.time }} | {{ lesson.instrument }} | Extra Info: {{ lesson.description }}
+          </p>
+        </div>
+        <div class="lesson-video">
+          {% video lesson.video 'medium' %}
+        </div>
+      </div>
 
       {% endfor %}
 
-      </tbody>
-    </table>
   </div>
 </div>
 
