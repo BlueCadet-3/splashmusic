@@ -110,7 +110,7 @@ main.container {
 
 footer {
   background-color: var(--bgc-01);
-  min-height: 10vh;
+  min-height: 8vh;
   color: var(--txt-01);
   font-family: var(--fnt-02);
 }
