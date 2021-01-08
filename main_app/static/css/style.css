@@ -37,6 +37,15 @@ body {
   -webkit-user-drag: none;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px #3c3f58 inset !important;
+    -webkit-text-fill-color: #707793;
+    font-family: var(--fnt-02), "Roboto", "Ubuntu", sans-serif;
+}
+
 a {
   color: var(--txt-02);
   font-family: var(--fnt-02);
