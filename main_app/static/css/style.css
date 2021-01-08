@@ -156,9 +156,9 @@ div.teacher-card {
 }
 
 div.lesson-container {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-columns: repeat(10, 1fr);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 2px solid var(--bgc-03);
   border-radius: 4vmin;
   padding: 3vmin;
@@ -253,9 +253,13 @@ section#lesson-delete {
 
 section#lesson-edit {
 }
-
-section#profile-edit {
-} */
+*/
+button#profile-edit {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
 
 section.content { 
   text-align: center;
