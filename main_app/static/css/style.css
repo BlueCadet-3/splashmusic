@@ -63,6 +63,10 @@ h6 {
   color: var(--txt-01);
 }
 
+#about-html {
+  text-align: center;
+}
+
 h1 {
   font-size: 6vmin;
   padding: 2vmin;
@@ -121,7 +125,10 @@ footer {
 }
 
 /* Sign Up */
-
+.signup-btn {
+  display: flex;
+  justify-content: center;
+}
 /* section#signup {
 } */
 
