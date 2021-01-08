@@ -27,7 +27,7 @@
     <p>Bio: {{ teacher.bio }}</p>
 
     {% if user.is_authenticated and user.id == teacher.user_id %}
-      <p><a href="{% url 'teachers_update' teacher.id %}">Update Profile</a></p>
+      <a href="{% url 'teachers_update' teacher.id %}" style=' color:#3bba9c;'>Update Profile</a>
 
       {% if teacher.photo_set.all|length > 0 %}
       {% else %}
@@ -35,7 +35,7 @@
       {% csrf_token %}
       <input type="file" name="photo-file">
        <div class='button-bar'>
-        <button type="submit">Submit</button>
+        <button type="submit">Upload Photo</button>
        </div>
     </form>
 
@@ -43,6 +43,7 @@
     {% endif %}
 
     {% if user.is_authenticated %}
+    <h3>Sign up for a lesson</h3>
       <form action="{% url 'add_lesson' teacher.id %}" method="POST">
         {% csrf_token %}
         <table>

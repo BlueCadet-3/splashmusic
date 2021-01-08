@@ -4,13 +4,16 @@
 <section class="form" id="lesson-delete">
 
   <h1>Delete Lesson</h1>
-  <h4>Are you sure you want to delete this lesson?</h4>
+  <p>Are you sure you want to delete this lesson?</p>
   <form action="" method="POST">
     {% csrf_token %}
-    <input type="submit" value="Yes - Delete!" class="btn">
-    <a href="/">Cancel</a>
+    <div class="button-bar">
+      <button type="submit">Delete</button> 
+    </div>
   </form>
-  
+  <div class="button-bar">
+    <a href="/teachers"><button>Instructors</button></a>
+  </div>
 </section>
 
 {% endblock %}

@@ -234,10 +234,10 @@ button {
   background-color: var(--bgc-03);
   max-width: 30vmin;
   font-family: var(--txt-01);
-  font-size: 1.5rem;
   padding: 2vmin 1vmin;
   border-radius: 2vmin;
   outline: none;
+  margin:  10px;
 }
 
 button:hover {
@@ -247,19 +247,23 @@ button:hover {
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
-/* 
 section#lesson-delete {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+ 
+section#lesson-edit {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
 }
 
-section#lesson-edit {
-}
-*/
 button#profile-edit {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  flex-flow: column wrap;
 }
+
 
 section.content { 
   text-align: center;
