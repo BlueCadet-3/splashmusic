@@ -40,4 +40,5 @@ class Lesson(models.Model):
         return reverse('detail', kwargs={ 'profile_id': self.profile.id })
 
 class ModelName(models.Model):
-    video = EmbedVideoField(blank=True)        
+    video = EmbedVideoField(blank=True)
+    
