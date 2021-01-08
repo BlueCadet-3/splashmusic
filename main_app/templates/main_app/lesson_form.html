@@ -2,23 +2,17 @@
 {% block content %}
 
 <section class="form" id="lesson-edit">
-
-  <h1>Edit Lesson</h1>
-  
+  <h1>Edit Lesson</h1>  
   <form action="" method="POST">
     {% csrf_token %}
-    <table>
-      {{ form }}
-    </table>
-    <input type="submit" value="Submit!" class="btn">
-  </form>
-  
-  {% if object %}
-  
-  <a href="/">Cancel</a>
-  
-  {% endif %}
-  
+      <table>
+        {{ form }}
+      </table>
+      <div class="button-bar">
+        <button type="submit">Save</button>
+      </div>
+  </form>  
+  <a href="/teachers"><button>Cancel</button></a>  
 </section>
 
 {% endblock %}

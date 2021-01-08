@@ -4,8 +4,8 @@
 
 <section id="detail">
 
-<div class="">
-  <div class="">
+<div>
+  <div>
     <h3>
       {{ teacher.first_name }}'s Lessons
     </h3>
@@ -27,27 +27,32 @@
     <p>Bio: {{ teacher.bio }}</p>
 
     {% if user.is_authenticated and user.id == teacher.user_id %}
-      <p><a href="{% url 'teachers_update' teacher.id %}">Update Profile</a></p>
+      <a href="{% url 'teachers_update' teacher.id %}" style=' color:#3bba9c;'>Update Profile</a>
 
       {% if teacher.photo_set.all|length > 0 %}
       {% else %}
-      <form action="{% url 'add_photo' teacher.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+        <form action="{% url 'add_photo' teacher.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
       {% csrf_token %}
       <input type="file" name="photo-file">
-        <br> <br>
-      <input type="submit" class="btn" value="Upload Photo">
+       <div class='button-bar'>
+        <button type="submit">Upload Photo</button>
+       </div>
     </form>
 
       {% endif %}
     {% endif %}
 
     {% if user.is_authenticated %}
+    <h3>Sign up for a lesson</h3>
       <form action="{% url 'add_lesson' teacher.id %}" method="POST">
         {% csrf_token %}
         <table>
           {{ lesson_form.as_table }}
         </table>
-        <input type="submit" value="Add Lesson" class="btn">
+        <div class='button-bar'>
+          <button type="submit">Submit</button>
+        </div>
+        <!-- <input type="submit" value="Add Lesson" class="btn"> -->
       </form>
 
       {% for lesson in teacher.lesson_set.all %}
@@ -60,6 +65,13 @@
         </div>
         <div class="lesson-video">
           {% video lesson.video 'medium' %}
+        </div>
+        <div class="=button-bar">
+          {% if user.id == lesson.profile.user_id %}
+          <a href="{% url 'lessons_update' lesson.id %}"><button type="submit">Edit</button></a>
+          <a href="{% url 'lessons_delete' lesson.id %}"><button type="submit">Delete</button></a>
+          {% endif %}
+
         </div>
       </div>
 
