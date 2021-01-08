@@ -8,11 +8,12 @@
     Splash Music connects students of all ages and skill levels with musicians from the top music conservatories and ensembles in the
     world. Whether you’re a beginner or professional, our teachers will make sure you have the best online music experience.
   </p>
+  <br>
   <p>
     {% if user.is_authenticated %}
-      <a href="{% url 'index' %}"><button>Book A Lesson</button></a>
+      <a href="{% url 'index' %}" class="signup-btn"><button>Book A Lesson</button></a>
     {% else %}
-      <a href="{% url 'signup' %}"><button>Book A Lesson</button></a>
+      <a href="{% url 'signup' %}" class="signup-btn"><button>Book A Lesson</button></a>
     {% endif %}
   </p>
 
