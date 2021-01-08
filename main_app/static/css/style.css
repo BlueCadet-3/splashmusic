@@ -123,7 +123,7 @@ main.container {
 
 footer {
   background-color: var(--bgc-01);
-  min-height: 10vh;
+  min-height: 8vh;
   color: var(--txt-01);
   font-family: var(--fnt-02);
   padding: 10px;
@@ -153,6 +153,27 @@ div.teacher-card {
   border: 2px solid var(--bgc-03);
   border-radius: 4vmin;
   margin: 2vmin;
+}
+
+div.lesson-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+  border: 2px solid var(--bgc-03);
+  border-radius: 4vmin;
+  padding: 3vmin;
+  margin: 2vmin;
+  color: #3bba9c;
+}
+
+div.lesson-info {
+  grid-column: 1 / span 10;
+  grid-row: 1 / span 1;
+}
+
+div.lesson-video {
+  grid-column: 2 / span 6;
+  grid-row: 3 span 7;
 }
 
 /* div.teacher-content {
